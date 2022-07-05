@@ -2,6 +2,10 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      animation: {
+        wiggle: 'wiggle 3s ease-in-out infinite',
+        text: 'text 5s ease infinite',
+      },
       keyframes: {
         wiggle: {
           '0%, 100%': {
@@ -11,9 +15,16 @@ module.exports = {
             transform: 'rotate(3deg)',
           },
         },
-      },
-      animation: {
-        wiggle: 'wiggle 3s ease-in-out infinite',
+        text: {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center',
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center',
+          },
+        },
       },
     },
   },
