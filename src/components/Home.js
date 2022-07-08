@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Mockup from '../assets/images/social-mockup.png';
 import { FaLinkedin } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
@@ -7,11 +7,13 @@ import { FaGooglePlay } from 'react-icons/fa';
 import { FaAppStoreIos } from 'react-icons/fa';
 
 const Home = () => {
+ 
   return (
     <div className='h-screen'>
       <div className='bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 h-screen grid grid-row-2 md:grid-cols-2 gap-4 px-10 py-8 md:py-0'>
         <div className='flex items-center justify-center'>
           <div className='p-4'>
+            
             <h1
               className='bg-gradient-to-r bg-clip-text text-transparent 
             from-teal-300  via-yellow-300 to-green-300 animate-text text-4xl md:text-8xl my-4 mx-2 font-semibold'
