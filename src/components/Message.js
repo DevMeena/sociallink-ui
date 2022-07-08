@@ -1,18 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import Avatar from '../assets/images/avatar.png';
-import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { doc, collection, updateDoc, arrayUnion, getDoc} from 'firebase/firestore';
 import { db } from '../firebase';
 import { useParams } from 'react-router-dom';
-
+import firebase from 'firebase/app';
 const Message = () => {
   const [message, setMessage] = useState('');
+  const [tokan,settokan] = useState('')
   const { id } = useParams();
 
+
+  const get_token = async ()=>{
+    const userref = await doc(db,"userdata",id)
+    const docsnap = await getDoc(userref)
+    if (docsnap.exists()) {
+      const detail = docsnap.data()
+      settokan(detail.token)
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }}
+  useEffect(()=>{
+    get_token()
+    
+  },[])
+   
   const handleSubmit = async (e) => {
     e.preventDefault();
+     
     try {
       await updateDoc(
-        doc(db, 'usersdata', id),
+        doc(db, 'userdata', id),
         { messages: arrayUnion(message) },
         { merge: true }
       );
@@ -20,10 +38,35 @@ const Message = () => {
       console.log(err);
     }
     setMessage('');
+    send_alert()
+  };
+
+  const send_alert =  () => {
+    console.log(tokan)
+   fetch('http://localhost:8080/alert', {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        
+        
+      },
+      body: JSON.stringify({
+       'tokan':tokan
+      })
+    }).then((response) => response.json())
+      .then((json) => {
+        console.log(json)
+        
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
     <div className='message-outer-container flex justify-center items-start'>
+     
       <div className='message-container flex flex-col justify-around'>
         <div className='bg-white rounded-2xl h-56 w-80 mx-auto flex justify-center items-center flex-col message-inner-container'>
           <div className='bg-blue-500 h-16 w-16 rounded-full border-4 border-white avatar'>
