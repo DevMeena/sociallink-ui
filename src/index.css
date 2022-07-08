@@ -66,33 +66,18 @@
   }
 
   .android-download {
-    width: 100%;
+    /* width: 50%; */
   }
 
   .ios-download {
-    width: 100%;
+    /* width: 50%; */
   }
 
   .android-download-link {
-    margin: 10px;
+    margin-left: 10px;
   }
 
   .ios-download-link {
-    margin: 10px;
-  }
-
-  .mockup-img {
-    /* animation: bounce 4s infinite;
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0.5);
-    animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
-  }
-  50% {
-    transform: translateY(0);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  }
-} */
+    margin-right: 10px;
   }
 }
