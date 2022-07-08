@@ -80,4 +80,28 @@
   .ios-download-link {
     margin-right: 10px;
   }
+
+  .product-desc-left {
+    background: radial-gradient(
+      110% 110% at 16.75% 100%,
+      #0099ff 0%,
+      #a033ff 60%,
+      #ff5280 90%,
+      #ff7061 100%
+    );
+  }
+
+  .grad-heading {
+    background: radial-gradient(
+      81.2% 81.2% at 0% 100%,
+      #0099ff 0%,
+      #a033ff 60%,
+      #ff5280 90%,
+      #ff7061 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
 }
